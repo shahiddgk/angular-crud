@@ -46,6 +46,7 @@ export class CouponsDataSource extends DataSource<CouponsItem> {
 
   constructor() {
     super();
+    this.fetchData();
   }
 
   /**
@@ -72,7 +73,11 @@ export class CouponsDataSource extends DataSource<CouponsItem> {
    * any open connections or free any held resources that were set up during connect.
    */
   disconnect() {}
-
+  
+  fetchData() {
+    // Calling service to fetch data  
+  }
+  
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.

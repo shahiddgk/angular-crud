@@ -44,7 +44,7 @@ export class CouponsDataSource extends DataSource<CouponsItem> {
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor() {
+  constructor(private discountService: discountService) {
     super();
     this.fetchData();
   }
@@ -75,6 +75,14 @@ export class CouponsDataSource extends DataSource<CouponsItem> {
   disconnect() {}
   
   fetchData() {
+    this.discountService.loadAllDiscounts().subscribe(
+      (response: any) => {
+        this.data = response;
+      },
+      (error) => {
+        alert(error.error.text);
+      }
+    );
     // Calling service to fetch data  
   }
   

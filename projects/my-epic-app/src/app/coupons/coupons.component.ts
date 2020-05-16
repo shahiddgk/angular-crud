@@ -4,6 +4,9 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { CouponsDataSource, CouponsItem } from './coupons-datasource';
 
+// Services
+import { DiscountService } from '@app/services';
+
 @Component({
   selector: 'my-org-coupons',
   templateUrl: './coupons.component.html',
@@ -14,7 +17,9 @@ export class CouponsComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<CouponsItem>;
   dataSource: CouponsDataSource;
-
+   
+  constructor(private discountService: DiscountService) {}
+  
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name'];
 
